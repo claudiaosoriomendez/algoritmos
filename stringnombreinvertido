@@ -1,0 +1,45 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include <stdlib.h>
+#define tam 100
+using namespace std;
+
+int main()
+{
+   int total;
+   string nombres[tam], nombre, apellido, continuar,vec[tam];
+   unsigned int encontro;//no acepta negativos
+   do{
+      cout << "ingrese el numero de nombres: ";
+      cin >> total;
+   } while ((total <= 0)||(total>100));
+   cin.ignore();//ignora la anterior
+   for (int i = 0; i < total; i++)
+   {
+      cout << "Ingrese el " << i + 1 << " nombre: ";
+      getline(cin, nombres[i]);//getline en ves de cin,da el espacio
+    }
+    cout << "\nResultados\n";
+    for (int i = 0; i < total; i++)
+    {
+       encontro = nombres[i].find(' ', 0);
+       if (encontro != string::npos)
+       {
+           nombre = nombres[i].substr(0, encontro);
+           apellido = nombres[i].substr(encontro + 1,nombres[i].length());
+		   vec[i]=apellido + ","+nombre;
+		   
+		   //cout << apellido << ", ";
+           //cout << nombre << endl;
+		   
+
+       }
+     }
+	for(int i=0;i<tam;i++)
+		cout<<vec[i]<<endl;
+
+    system("pause");
+    return 0;
+}
+
